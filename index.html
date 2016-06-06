@@ -20,7 +20,7 @@
             <li ng-repeat="item in items track by $index">
                 <input type="checkbox" ng-model="item.isDone">
                 <span ng-class="{'done': item.isDone}" ng-bind="item.content"></span>
-                <button>×</button>
+                <button ng-click="removeItem($index)">×</button>
             </li>
         </ul>
     </section>

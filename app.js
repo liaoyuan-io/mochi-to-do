@@ -17,5 +17,8 @@
                 $scope.items.push({content:addedItem, isDone:false})
             }
         }
+        $scope.removeItem = function (index) {
+            $scope.items.splice(index,1)
+        }
     })
 })();
