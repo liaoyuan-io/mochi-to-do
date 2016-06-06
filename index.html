@@ -4,10 +4,15 @@
         <meta charset="utf-8">
         <title>餅列表</title>
     </head>
-    <body>
+    <body ng-controller="TodoCtrl">
     <section>这里是标题和萌物图</section>
-    <section>这里是输入框</section>
-    <section ng-controller="TodoCtrl">
+    <section>
+        <input type="text" placeholder="请输入..."
+               ng-model="newItem"
+               ng-keydown="submitItem($event.keyCode)"
+        >
+    </section>
+    <section>
         <ul>
             <li ng-repeat="item in items track by $index">
                 <input type="checkbox">
