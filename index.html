@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>餅列表</title>
+        <style>
+            .done { text-decoration: line-through }
+        </style>
     </head>
     <body ng-controller="TodoCtrl">
     <section>这里是标题和萌物图</section>
@@ -15,8 +18,8 @@
     <section>
         <ul>
             <li ng-repeat="item in items track by $index">
-                <input type="checkbox">
-                <span ng-bind="item.content"></span>
+                <input type="checkbox" ng-model="item.isDone">
+                <span ng-class="{'done': item.isDone}" ng-bind="item.content"></span>
                 <button>×</button>
             </li>
         </ul>
