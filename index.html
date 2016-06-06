@@ -7,7 +7,17 @@
     <body>
     <section>这里是标题和萌物图</section>
     <section>这里是输入框</section>
-    <section>这里是列表</section>
+    <section ng-controller="TodoCtrl">
+        <ul>
+            <li ng-repeat="item in items track by $index">
+                <input type="checkbox">
+                <span ng-bind="item.content"></span>
+                <button>×</button>
+            </li>
+        </ul>
+    </section>
     <section>这里是batch action</section>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
     </body>
 </html>
