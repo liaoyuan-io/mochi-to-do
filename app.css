@@ -1,0 +1,94 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #f7f7f7;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 20px;
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 600px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.header {
+
+}
+
+.header .mochi {
+    float: right;
+}
+
+.header h1 {
+    clear: both;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.08);
+}
+
+.box input {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 20px;
+    padding: 12px 15px 12px 54px;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
+}
+
+.todo-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: none;
+    padding: 12px 15px;
+    background-color: white;
+}
+
+.todo-list-item .is-done {
+    cursor: pointer;
+}
+
+.todo-list-item .content {
+    flex: 1;
+    padding: 0 15px;
+    line-height: 28px;
+}
+
+.todo-list-item .content.done {
+    text-decoration: line-through;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.25);
+}
+
+.todo-list-item .remove {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+}
+
+.todo-list-item .remove:focus {
+    outline: none;
+}

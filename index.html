@@ -1,30 +1,34 @@
 <!doctype html>
 <html lang="en" ng-app="mochiToDo">
-    <head>
-        <meta charset="utf-8">
-        <title>餅列表</title>
-        <style>
-            .done { text-decoration: line-through }
-        </style>
-    </head>
-    <body ng-controller="TodoCtrl">
-    <section>这里是标题和萌物图</section>
-    <section>
-        <input type="text" placeholder="请输入..."
-               ng-model="newItem"
-               ng-keydown="submitItem($event.keyCode)"
-        >
-    </section>
-    <section>
-        <ul>
-            <li ng-repeat="item in items track by $index">
-                <input type="checkbox" ng-model="item.isDone">
-                <span ng-class="{'done': item.isDone}" ng-bind="item.content"></span>
-                <button ng-click="removeItem($index)">×</button>
-            </li>
-        </ul>
-    </section>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="app.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>餅&middot;待办事项列表</title>
+    <style>
+    </style>
+    <link href="app.css" rel="stylesheet">
+</head>
+<body ng-controller="TodoCtrl">
+<div class="container">
+    <div class="wrapper">
+        <section class="header">
+            <img class="mochi" src="http://www.feathersnfurshoppe.com/images/smallanimaldocs/Hamster.gif">
+            <h1>餅&middot;待办事项</h1>
+        </section>
+        <section class="box">
+            <input type="text" placeholder="请输入..."
+                   ng-model="newItem"
+                   ng-keydown="submitItem($event.keyCode)">
+            <ul class="todo-list">
+                <li class="todo-list-item" ng-repeat="item in items track by $index">
+                    <input class="is-done" type="checkbox" ng-model="item.isDone">
+                    <span ng-class="{'done': item.isDone}" class="content" ng-bind="item.content"></span>
+                    <button class="remove" ng-click="removeItem($index)">&times;</button>
+                </li>
+            </ul>
+        </section>
+    </div>
+</div>
+<script src="bower_components/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
