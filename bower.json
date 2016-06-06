@@ -1,0 +1,18 @@
+{
+  "name": "mochi-to-do",
+  "homepage": "https://github.com/liaoyuan-io/mochi-to-do",
+  "authors": [
+    "Tong Shen <tshen@liaoyuan.email>; Guangcheng Wei <guangcheng@liaoyuan.email>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
