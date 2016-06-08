@@ -22,4 +22,4 @@
 
 有。扫描以下二维码入群，和其他参与者交流。后续活动安排也会在群内优先发布。
 
-![二维码](blob/master/qr.png?raw=true)
+![二维码](qr.png?raw=true)
