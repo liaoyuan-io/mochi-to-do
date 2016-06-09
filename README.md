@@ -1,5 +1,7 @@
 #Mochi To Do
 
+![Mochi](http://www.feathersnfurshoppe.com/images/smallanimaldocs/Hamster.gif)
+
 这是在波士顿「燎原」办公室举办的于 2016 年 5 月开始的 **「燎原」全栈工程师加速班** 系列活动使用的示例项目。它目前使用 [AngularJS](https://thinkster.io/a-better-way-to-learn-angularjs) 完成了如下功能：
 
 1. 当有待办事项存在时，我希望能看到待办事项列表。
