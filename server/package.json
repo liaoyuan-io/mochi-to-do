@@ -1,0 +1,11 @@
+{
+  "name": "mochi-to-do-server",
+  "version": "0.0.1",
+  "description": "Mochi To Do Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
