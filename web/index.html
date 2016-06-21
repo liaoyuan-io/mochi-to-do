@@ -17,6 +17,7 @@
         <section class="box">
             <input type="text" placeholder="请输入..."
                    ng-model="newItem"
+                   ng-disabled="posting"
                    ng-keydown="submitItem($event.keyCode)">
             <ul class="todo-list">
                 <li class="todo-list-item" ng-repeat="item in items track by $index">

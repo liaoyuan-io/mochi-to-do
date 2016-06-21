@@ -18,8 +18,22 @@
         $scope.submitItem = function (keyCode) {
             if(keyCode == ENTER_KEY) {
                 const addedItem = $scope.newItem;
+
+                const data = {
+                    content: addedItem,
+                    isDone: false
+                };
+
+                $scope.posting = true;
                 $scope.newItem = '';
-                $scope.items.push({content:addedItem, isDone:false});
+                $http.post("/todo", data).then(function(res){
+                    $scope.posting = false;
+                    $scope.items.push(res);
+                }).catch(function(){
+                    $scope.posting = false;
+                    $scope.newItem = addedItem;
+                    console.log('提交新待办事项失败。');
+                });
             }
         };
         $scope.removeItem = function (index) {
