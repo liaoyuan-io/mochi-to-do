@@ -21,7 +21,6 @@ app.get('/todo', function (req, res) {
 });
 
 app.post('/todo', function (req, res, next) {
-    console.log(req.body);
     var newItem = req.body;
     if (!newItem || !newItem.content || !newItem.hasOwnProperty('isDone')) {
         res.status(400);
@@ -35,7 +34,6 @@ app.post('/todo', function (req, res, next) {
 app.put('/todo/:itemId', function (req, res) {
     var itemId = req.params.itemId;
     var newItem = req.body;
-    console.log(itemId, newItem);
     if (!newItem || !newItem.content || !newItem.hasOwnProperty('isDone')) {
         res.status(400);
         res.json(new Error('Missing content or isDone.'));

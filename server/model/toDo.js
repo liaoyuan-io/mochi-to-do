@@ -22,14 +22,12 @@ ToDoModel.prototype.findById = function (id) {
 
 ToDoModel.prototype.insert = function (newItem) {
     newItem = Object.assign({id: this.nextId++}, newItem);
-    console.log(newItem);
     this.items.push(newItem);
     return newItem;
 };
 
 ToDoModel.prototype.updateById = function (id, newItem) {
     var index = this.findIndexById(id);
-    console.log(index, id, newItem);
     newItem.id = id;
     this.items[index] = newItem;
     return newItem;
