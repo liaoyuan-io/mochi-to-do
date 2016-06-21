@@ -48,8 +48,13 @@
                 });
             }
         };
-        $scope.removeItem = function (index) {
-            $scope.items.splice(index,1);
-        };
+
+        $scope.removeItem = function (id) {
+            $http.delete("/todo/" + id).then(function () {
+                $scope.items.splice(index, 1);
+            }).catch(function () {
+                console.log('删除待办事项失败。');
+            })
+        }
     });
 })();
