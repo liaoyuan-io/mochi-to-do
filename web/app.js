@@ -2,9 +2,9 @@
     'use strict';
     const ENTER_KEY = 13;
     angular.module('mochiToDo', []).controller('TodoCtrl', function TodoCtrl($scope, $http) {
-        $http.get("/todo").then(function (response) {
-            $scope.items = response.items;
-        }).catch(function(){
+        $http.get("/todo").then(function (res) {
+            $scope.items = res.data;
+        }).catch(function () {
             $scope.items = [
                 {id: 100, content: '检测网络连接', isDone: false},
                 {id: 200, content: '当有待办事项存在时，我希望能看到待办事项列表', isDone: false},
@@ -18,9 +18,9 @@
 
         $scope.checkItem = function (item) {
             item.updating = true;
-            $http.put("/todo/"+item.id, item).then(function(){
+            $http.put("/todo/" + item.id, item).then(function () {
                 item.updating = false;
-            }).catch(function(){
+            }).catch(function () {
                 item.updating = false;
                 item.isDone = !item.isDone;
                 console.log('更新待办事项失败。');
@@ -28,7 +28,7 @@
         };
 
         $scope.submitItem = function (keyCode) {
-            if(keyCode == ENTER_KEY) {
+            if (keyCode == ENTER_KEY) {
                 const addedItem = $scope.newItem;
 
                 const data = {
@@ -38,10 +38,10 @@
 
                 $scope.posting = true;
                 $scope.newItem = '';
-                $http.post("/todo", data).then(function(res){
+                $http.post("/todo", data).then(function (res) {
                     $scope.posting = false;
-                    $scope.items.push(res);
-                }).catch(function(){
+                    $scope.items.push(res.data);
+                }).catch(function () {
                     $scope.posting = false;
                     $scope.newItem = addedItem;
                     console.log('提交新待办事项失败。');
@@ -49,7 +49,7 @@
             }
         };
 
-        $scope.removeItem = function (id) {
+        $scope.removeItem = function (id, index) {
             $http.delete("/todo/" + id).then(function () {
                 $scope.items.splice(index, 1);
             }).catch(function () {

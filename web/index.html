@@ -23,7 +23,7 @@
                 <li class="todo-list-item" ng-repeat="item in items track by $index">
                     <input title="is done" class="is-done" type="checkbox" ng-model="item.isDone" ng-change="checkItem(item)">
                     <span ng-class="{'done': item.isDone}" class="content" ng-bind="item.content"></span>
-                    <button class="remove" ng-click="removeItem(item.id)">&times;</button>
+                    <button class="remove" ng-click="removeItem(item.id, $index)">&times;</button>
                 </li>
             </ul>
         </section>
