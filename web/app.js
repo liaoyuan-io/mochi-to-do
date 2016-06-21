@@ -15,6 +15,18 @@
             ];
         });
         $scope.newItem = '';
+
+        $scope.checkItem = function (item) {
+            item.updating = true;
+            $http.put("/todo/"+item.id, item).then(function(){
+                item.updating = false;
+            }).catch(function(){
+                item.updating = false;
+                item.isDone = !item.isDone;
+                console.log('更新待办事项失败。');
+            });
+        };
+
         $scope.submitItem = function (keyCode) {
             if(keyCode == ENTER_KEY) {
                 const addedItem = $scope.newItem;
