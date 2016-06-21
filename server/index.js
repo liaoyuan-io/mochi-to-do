@@ -49,6 +49,8 @@ app.delete('/todo/:itemId', function (req, res) {
     res.json(model.removeById(itemId));
 });
 
+app.use(express.static("../web"));
+
 var port = 3000;
 app.listen(port, function () {
     console.log('Listening on port ' + port + '... ');
