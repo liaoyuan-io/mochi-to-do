@@ -20,7 +20,7 @@
                    ng-keydown="submitItem($event.keyCode)">
             <ul class="todo-list">
                 <li class="todo-list-item" ng-repeat="item in items track by $index">
-                    <input class="is-done" type="checkbox" ng-model="item.isDone">
+                    <input title="is done" class="is-done" type="checkbox" ng-model="item.isDone">
                     <span ng-class="{'done': item.isDone}" class="content" ng-bind="item.content"></span>
                     <button class="remove" ng-click="removeItem($index)">&times;</button>
                 </li>
@@ -28,7 +28,7 @@
         </section>
     </div>
 </div>
-<script src="bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
