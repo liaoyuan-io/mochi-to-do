@@ -45,7 +45,9 @@
 
 #### 即将在7月5日举办的活动内容如下：
 
-Workshop：用 [React Native](https://facebook.github.io/react-native/) 打造 iOS 应用，随时随地刷 To Do！
+**Workshop：用 [React Native](https://facebook.github.io/react-native/) 打造 iOS 应用，随时随地刷 To Do！**
+
+涉及内容包括 React Native 开发环境配置、项目生成、调试和开发等；并简要介绍 XCode、iOS Simulator 的使用；以及 Push Notification 等移动端常用模式。
 
 *前置要求*
 
