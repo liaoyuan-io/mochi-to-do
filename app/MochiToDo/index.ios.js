@@ -15,8 +15,8 @@ import {
 } from 'react-native';
 
 const TODOS = [
-  {id: 0, content: '当有待办事项存在时，我希望能看到待办事项列表', isDone: false},
-  {id: 1, content: '当我输入文字并使用回车确认时，我希望新输入的待办事项项目显示在列表中', isDone: false},
+  {id: 0, content: '当有待办事项存在时，我希望能看到待办事项列表', isDone: true},
+  {id: 1, content: '当我输入文字并使用回车确认时，我希望新输入的待办事项项目显示在列表中', isDone: true},
   {id: 2, content: '当我点击待办事项左侧的checkbox时，待办事项应该标示为已完成', isDone: false},
   {id: 3, content: '当我点击已完成待办事项左侧的checkbox时，待办事项应该标示为未完成', isDone: false},
   {id: 4, content: '当我点击待办事项右侧的关闭按钮时，待办事项应当被删除', isDone: false}
@@ -89,7 +89,8 @@ class MochiToDo extends Component {
   constructor(){
     super();
     this.state = {
-      todos: toDoData.items
+      todos: toDoData.items,
+      text: ''
     }
   }
   componentWillMount() {
@@ -100,12 +101,24 @@ class MochiToDo extends Component {
   componentWillUnount() {
     this.unusbscribe();
   }
+  onChangeText(text){
+    this.setState({text: text});
+  }
+  onSubmitEditing(){
+    if(this.state.text) {
+      toDoData.add(this.state.text);
+      this.setState({text: ''});
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} 
         placeholder="请输入待办事项..."
+        onChangeText={this.onChangeText.bind(this)}
+        onSubmitEditing={this.onSubmitEditing.bind(this)}
+        value={this.state.text}
         />
       </View>
       <ScrollView>
