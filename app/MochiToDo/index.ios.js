@@ -11,6 +11,7 @@ import {
   TextInput,
   ScrollView,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native';
 
@@ -74,7 +75,9 @@ class ToDoItem extends Component {
   render() {
     const checked = this.props.checked;
     return <View style={styles.toDoItemContainer}>
-      {this.renderCheckbox(checked)}
+      <TouchableOpacity onPress={()=>toDoData.check(this.props.id)}>
+        {this.renderCheckbox(checked)}
+      </TouchableOpacity>
       <View style={styles.todoItemContent}>
         <Text style={[styles.todoItemContentText, checked && {textDecorationLine: 'line-through'}]}>{this.props.children}</Text>
       </View>
@@ -123,7 +126,7 @@ class MochiToDo extends Component {
       </View>
       <ScrollView>
         { this.state.todos.map((todo)=>{
-          return <ToDoItem key={todo.id} checked={todo.isDone}>{todo.content}</ToDoItem>
+          return <ToDoItem key={todo.id} id={todo.id} checked={todo.isDone}>{todo.content}</ToDoItem>
         }) }
       </ScrollView>
       </View>
