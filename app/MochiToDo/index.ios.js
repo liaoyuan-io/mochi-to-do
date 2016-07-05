@@ -81,9 +81,11 @@ class ToDoItem extends Component {
       <View style={styles.todoItemContent}>
         <Text style={[styles.todoItemContentText, checked && {textDecorationLine: 'line-through'}]}>{this.props.children}</Text>
       </View>
-      <View style={styles.iconContainer}>
-        <Text style={styles.icon}>✖️</Text>
-      </View>
+      <TouchableOpacity onPress={()=>toDoData.remove(this.props.id)}>
+        <View style={styles.iconContainer}>
+          <Text style={styles.icon}>✖️</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   }
 }
