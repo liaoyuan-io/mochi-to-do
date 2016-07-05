@@ -22,16 +22,17 @@ class MochiToDo extends Component {
         placeholder="请输入待办事项..."
         />
       </View>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={styles.toDoItemContainer}>
+        <View style={[styles.iconContainer, {backgroundColor: 'white', borderWidth: 1, borderColor: 'black'}]}>
+          <Text style={styles.icon}>✔️</Text>
+        </View>
+        <View style={styles.todoItemContent}>
+          <Text style={styles.todoItemContentText}>待办事项一</Text>
+        </View>
+        <View style={styles.iconContainer}>
+          <Text style={styles.icon}>✖️</Text>
+        </View>
+      </View>
       </View>
     );
   }
@@ -41,11 +42,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#F5FCFF',
   },
   inputContainer: {
-    alignSelf:'stretch', 
     backgroundColor: 'white', 
     borderRadius: 4,
     paddingVertical: 8,
@@ -59,16 +59,23 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     lineHeight: 24
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  toDoItemContainer: {
+    flexDirection:'row', 
+    alignItems: 'center', 
+    padding: 24,
+    borderTopWidth: 1,
+    borderTopColor: 'black'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  iconContainer: {
+    height: 24, 
+    width: 24, 
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  icon: {fontSize: 12},
+  todoItemContent: {flex: 1, paddingHorizontal: 24},
+  todoItemContentText: {fontSize: 16},
 });
 
 AppRegistry.registerComponent('MochiToDo', () => MochiToDo);
