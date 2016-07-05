@@ -25,23 +25,39 @@ const TODOS = [
 class ToDo {
   constructor(items = []){
     this.items = items;
+    this.listeners = [];
+  }
+  subscribe(callback){
+    const id = this.listeners.length;
+    this.listeners.push(callback);
+    return ()=>{
+      this.listeners.splice(id, 1);
+    }
+  }
+  update(){
+    this.listeners.forEach((callback)=>{
+      callback(this.items);
+    })
   }
   add(content){
-    const id = this.items.length
+    const id = this.items.length;
     this.items.push({
       id: id, content: content, isDone: false
-    })
+    });
+    this.update();
   }
   check(id){
     this.items = this.items.map((item)=>{
       if(item.id !== id) return item;
       return Object.assign({},item, {isDone: !item.isDone});
-    })
+    });
+    this.update();
   }
   remove(id){
     this.items = this.items.filter((item)=>{
       return item.id !== id
-    })
+    });
+    this.update();
   }
 }
 
@@ -51,7 +67,7 @@ class ToDoItem extends Component {
   renderCheckbox(checked){
     if(checked) return <View style={[styles.iconContainer, {backgroundColor: 'grey', borderWidth: 1, borderColor: 'black'}]}>
       <Text style={styles.icon}>✔️</Text>
-    </View> 
+    </View>;
     return <View style={[styles.iconContainer, {backgroundColor: 'white', borderWidth: 1, borderColor: 'black'}]}>
     </View> 
   }
@@ -76,6 +92,14 @@ class MochiToDo extends Component {
       todos: toDoData.items
     }
   }
+  componentWillMount() {
+    this.unusbscribe = toDoData.subscribe((items)=>{
+      this.setState({todos: items});
+    })
+  }
+  componentWillUnount() {
+    this.unusbscribe();
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -99,7 +123,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'stretch',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   inputContainer: {
     backgroundColor: 'white', 
@@ -108,7 +132,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     marginTop: 20 + 24,
     marginHorizontal: 24,
-    marginBottom: 24,
+    marginBottom: 24
   },
   input: {
     height: 24, 
@@ -127,11 +151,11 @@ const styles = StyleSheet.create({
     width: 24, 
     borderRadius: 8,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   icon: {fontSize: 12},
   todoItemContent: {flex: 1, paddingHorizontal: 24},
-  todoItemContentText: {fontSize: 16},
+  todoItemContentText: {fontSize: 16}
 });
 
 AppRegistry.registerComponent('MochiToDo', () => MochiToDo);
